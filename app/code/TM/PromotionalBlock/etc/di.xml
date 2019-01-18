@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * TM_PromotionalBlock extension
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category  TM
+ * @package   TM_PromotionalBlock
+ * @copyright Copyright (c) 2019
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="TM\PromotionalBlock\Api\PromotionalblockRepositoryInterface" type="TM\PromotionalBlock\Model\PromotionalblockRepository"/>
+    <preference for="TM\PromotionalBlock\Api\Data\PromotionalblockInterface" type="TM\PromotionalBlock\Model\Promotionalblock"/>
+    <preference for="TM\PromotionalBlock\Api\Data\PromotionalblockSearchResultInterface" type="Magento\Framework\Api\SearchResults"/>
+    <type name="TM\PromotionalBlock\Model\ResourceModel\Promotionalblock\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">tm_promotionalblock_promotionalblock</argument>
+            <argument name="eventPrefix" xsi:type="string">tm_promotionalblock_promotionalblock_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">promotionalblock_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">TM\PromotionalBlock\Model\ResourceModel\Promotionalblock</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="tm_promotionalblock_promotionalblock_listing_data_source" xsi:type="string">TM\PromotionalBlock\Model\ResourceModel\Promotionalblock\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

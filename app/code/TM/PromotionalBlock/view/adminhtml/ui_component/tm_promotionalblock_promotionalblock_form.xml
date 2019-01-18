@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * TM_PromotionalBlock extension
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category  TM
+ * @package   TM_PromotionalBlock
+ * @copyright Copyright (c) 2019
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">tm_promotionalblock_promotionalblock_form.promotionalblock_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Promotional Block Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back" class="TM\PromotionalBlock\Block\Adminhtml\Promotionalblock\Edit\Buttons\Back"/>
+            <button name="delete" class="TM\PromotionalBlock\Block\Adminhtml\Promotionalblock\Edit\Buttons\Delete"/>
+            <button name="reset" class="TM\PromotionalBlock\Block\Adminhtml\Promotionalblock\Edit\Buttons\Reset"/>
+            <button name="save" class="TM\PromotionalBlock\Block\Adminhtml\Promotionalblock\Edit\Buttons\Save"/>
+            <button name="save_and_continue" class="TM\PromotionalBlock\Block\Adminhtml\Promotionalblock\Edit\Buttons\SaveAndContinue"/>
+        </buttons>
+        <namespace>tm_promotionalblock_promotionalblock_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>tm_promotionalblock_promotionalblock_form.promotionalblock_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="promotionalblock_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="tm_promotionalblock/promotionalblock/save"/>
+        </settings>
+        <dataProvider class="TM\PromotionalBlock\Model\Promotionalblock\DataProvider" name="promotionalblock_form_data_source">
+            <settings>
+                <requestFieldName>promotionalblock_id</requestFieldName>
+                <primaryFieldName>promotionalblock_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label translate="true">Promotional Block Information</label>
+        </settings>
+        <field name="promotionalblock_id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">promotionalblock</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>promotionalblock_id</dataScope>
+            </settings>
+        </field>
+        <field name="name" sortOrder="10" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">promotionalblock</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Name</label>
+                <dataScope>name</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="status" formElement="checkbox" sortOrder="20">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">promotionalblock</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Status</label>
+                <dataScope>status</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="customergroups" formElement="multiselect" sortOrder="30">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">promotionalblock</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Customer Group</label>
+                <dataScope>customergroups</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="TM\PromotionalBlock\Model\Promotionalblock\Source\Customergroups"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
+        <field name="display" formElement="select" sortOrder="40">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">promotionalblock</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Where To Display?</label>
+                <dataScope>display</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="TM\PromotionalBlock\Model\Promotionalblock\Source\Display"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="position" formElement="select" sortOrder="50">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">promotionalblock</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Position</label>
+                <dataScope>position</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="TM\PromotionalBlock\Model\Promotionalblock\Source\Position"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+    </fieldset>
+</form>
